@@ -19,7 +19,7 @@ export class LoginComponent {
     this.password = "";
     // Verificar si ya hay un usuario logueado mediante la cookie
     if(this.userService.getToken() != ''){
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('panel');
     }
    }
 
@@ -33,7 +33,7 @@ export class LoginComponent {
           // Guardar el token en una cookie
           this.userService.setToken(data.token);
           // Redireccionamos al dashboard
-          this.router.navigateByUrl('');
+          this.router.navigateByUrl('panel');
         },
         error => {
           console.log(error);

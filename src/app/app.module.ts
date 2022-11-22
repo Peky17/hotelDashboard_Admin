@@ -7,17 +7,21 @@ import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { PanelComponent } from './panel/panel.component';
+import { ModulosModule } from './panel/modulos.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    PanelComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModulosModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
