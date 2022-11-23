@@ -27,7 +27,7 @@ export class UsersService {
   register(user: Object): Observable<any> {
     return this.http.post("http://localhost:8090/api/auth/signup", user);
   }
-  // Metodos para el manejo de cookies
+  // Metodos para el manejo de cookies del usuario
   setToken(token: string) {
     this.cookies.set("token", token);
   }
@@ -36,5 +36,27 @@ export class UsersService {
   }
   deleteToken(){
     this.cookies.delete("token");
+  }
+
+  // Username del usuario en sesion
+  setUsername(nombre: string){
+    this.cookies.set("username", nombre);
+  }
+   getUsername() {
+    return this.cookies.get("username");
+  }
+  deleteUsername(){
+    this.cookies.delete("username");
+  }
+
+  // Email del usuario en sesion
+    setEmail(email: string){
+    this.cookies.set("email", email);
+  }
+   getEmail() {
+    return this.cookies.get("email");
+  }
+  deleteEmail(){
+    this.cookies.delete("email");
   }
 }

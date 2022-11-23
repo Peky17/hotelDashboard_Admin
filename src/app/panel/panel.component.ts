@@ -33,8 +33,10 @@ export class PanelComponent {
           Swal.fire('Hasta pronto!', '', 'success');
           // Cerramos sesion en la api rest
           this.userService.logout(this.userService.getToken);
-          // Eliminamos el token
+          // Eliminamos los datos de las cookies
           this.userService.deleteToken();
+          this.userService.deleteUsername();
+          this.userService.deleteEmail();
           console.log("Ha cerrado sesion");
           this.router.navigateByUrl('login');
         } else if (result.isDenied) {

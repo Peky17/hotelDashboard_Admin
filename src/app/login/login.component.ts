@@ -30,10 +30,17 @@ export class LoginComponent {
           this.userService.login(user).subscribe( data => {
           // Informacion del usuario a loguear enviada
           console.log(data);
-          // Guardar el token en una cookie
-          this.userService.setToken(data.id);
-          // Redireccionamos al dashboard
-          this.router.navigateByUrl('panel');
+          // Verificar que solo puedan acceder administradores
+          if(data.roles[0] != 'ROLE_ADMIN'){
+            Swal.fire('OPERACION DENEGADA', 'No tienes permiso para acceder a este sistema', 'info');
+          } else {
+            // Guardar datos del usuario en una cookie
+            this.userService.setToken(data.id);
+            this.userService.setUsername(data.username);
+            this.userService.setEmail(data.email);
+            // Redireccionamos al dashboard
+            this.router.navigateByUrl('panel');
+          }
         },
         error => {
           console.log(error);
