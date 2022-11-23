@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { switchAll } from 'rxjs';
 import { UsersService } from '../userService/users.service';
 import Swal from 'sweetalert2';
 
@@ -22,9 +21,22 @@ export class PanelComponent {
 
   // Metodo para cerrar sesion
   logout(){
-      Swal.fire('OPERACION DENEGADA', 'Porfavor complete el formulario!', 'info');
-      this.userService.deleteToken();
-      console.log("Ha cerrado sesion");
-      this.router.navigateByUrl('login');
+      Swal.fire({
+        title: '¿Desea salir de la aplicacion?',
+        icon: 'warning',
+        showDenyButton: true,
+        confirmButtonText: 'Salir',
+        denyButtonText: 'No salir',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire('Hasta pronto!', '', 'success');
+          this.userService.deleteToken();
+          console.log("Ha cerrado sesion");
+          this.router.navigateByUrl('login');
+        } else if (result.isDenied) {
+          Swal.fire('Sesion no cerrada', '', 'info');
+        }
+      })
   }
 }
