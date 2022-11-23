@@ -19,8 +19,8 @@
     <aside class="app-sidebar">
         <div class="app-sidebar__user"><img class="app-sidebar__user-avatar">
             <div>
-                <p class="app-sidebar__user-name">Usuario</p>
-                <p class="app-sidebar__user-designation">correo</p>
+                <p class="app-sidebar__user-name">{{ this.userService.getUsername()}}</p>
+                <p class="app-sidebar__user-designation">{{ this.userService.getEmail()}}</p>
             </div>
         </div>
         <ul class="app-menu">
