@@ -15,11 +15,17 @@ export class UsersService {
   login(user: Object): Observable<any> {
     /* Peticion mediante el metodo post para enviar los datos del usuario a loguear 
     (Se le envia el obejto con los datos contenidos)*/
-     return this.http.post("https://reqres.in/api/login", user); 
+     return this.http.post("http://localhost:8090/api/auth/signin", user); 
+  }
+  // Metodo para cerrar sesion
+  logout(user: Object): Observable<any> {
+    /* Peticion mediante el metodo post para enviar los datos del usuario a loguear 
+    (Se le envia el obejto con los datos contenidos)*/
+     return this.http.post("http://localhost:8090/api/auth/signout", user); 
   }
   // Metodo de registro de usuarios
   register(user: Object): Observable<any> {
-    return this.http.post("https://reqres.in/api/register", user);
+    return this.http.post("http://localhost:8090/api/auth/signup", user);
   }
   // Metodos para el manejo de cookies
   setToken(token: string) {

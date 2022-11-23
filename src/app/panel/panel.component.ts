@@ -31,6 +31,9 @@ export class PanelComponent {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           Swal.fire('Hasta pronto!', '', 'success');
+          // Cerramos sesion en la api rest
+          this.userService.logout(this.userService.getToken);
+          // Eliminamos el token
           this.userService.deleteToken();
           console.log("Ha cerrado sesion");
           this.router.navigateByUrl('login');

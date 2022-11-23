@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string;
+  usuario: string;
   password: string;
   tituloAlerta: string='';
 
   constructor(public userService: UsersService, public router: Router) {
     // Inicializamos las variables 
-    this.email = "";
+    this.usuario = "";
     this.password = "";
     // Verificar si ya hay un usuario logueado mediante la cookie
     if(this.userService.getToken() != ''){
@@ -24,14 +24,14 @@ export class LoginComponent {
    }
 
    login() {
-    if(this.email != '' && this.password != ''){
-      if(this.email != '' || this.password != ''){
-        const user = {email: this.email, password: this.password};
+    if(this.usuario != '' && this.password != ''){
+      if(this.usuario != '' || this.password != ''){
+        const user = {username: this.usuario, password: this.password};
           this.userService.login(user).subscribe( data => {
           // Informacion del usuario a loguear enviada
           console.log(data);
           // Guardar el token en una cookie
-          this.userService.setToken(data.token);
+          this.userService.setToken(data.id);
           // Redireccionamos al dashboard
           this.router.navigateByUrl('panel');
         },
