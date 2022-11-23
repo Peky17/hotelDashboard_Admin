@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { PanelComponent } from './panel/panel.component';
 
-const routes: Routes = [
-  { path: "", component: LoginComponent, pathMatch: "full" },
-  { path: "panel", component: PanelComponent, pathMatch: "full" }
+const app_routes: Routes= [
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'panel', pathMatch: 'full', redirectTo: 'panel/home' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(app_routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

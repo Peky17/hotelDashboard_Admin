@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PanelComponent } from './panel/panel.component';
+import { DashboardModule } from './panel/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PanelComponent } from './panel/panel.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DashboardModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
